@@ -21,11 +21,8 @@ private:
 };
 
 
-Core::Core():
-  linear_(1),
-  angular_(2)
+Core::Core(): linear_(1), angular_(2)
 {
-
   nh_.param("axis_linear", linear_, linear_);
   nh_.param("axis_angular", angular_, angular_);
   nh_.param("scale_angular", a_scale_, a_scale_);
