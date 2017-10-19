@@ -1,8 +1,0 @@
-prefix=/home/ros/ROS-project-MI/robot_ws/install
-
-Name: core
-Description: Description of core
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/ros/ROS-project-MI/robot_ws/install/lib 
-Requires: 

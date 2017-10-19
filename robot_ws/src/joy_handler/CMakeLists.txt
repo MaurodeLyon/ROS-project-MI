@@ -4,6 +4,7 @@ project(joy_handler)
 find_package(catkin REQUIRED COMPONENTS
   joy
   roscpp
+  std_msgs
 )
 
 catkin_package(
