@@ -3,6 +3,7 @@ project(core)
 find_package(catkin REQUIRED COMPONENTS
   joy
   roscpp
+  std_msgs
 )
 
 catkin_package(

@@ -1,0 +1,2 @@
+core:joy_handler:ros_cam:rosaria:usb_cam
+-DCATKIN_DEVEL_PREFIX=/home/ros/ROS-project-MI/robot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ros/ROS-project-MI/robot_ws/install -G Unix Makefiles
