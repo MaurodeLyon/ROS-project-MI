@@ -1,0 +1,8 @@
+prefix=/home/ros/ROS-project-MI/robot_ws/install
+
+Name: joy_handler
+Description: Description of joy_handler
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ros/ROS-project-MI/robot_ws/install/lib 
+Requires: 

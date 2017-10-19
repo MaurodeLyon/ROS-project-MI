@@ -1,0 +1,8 @@
+prefix=/home/ros/ROS-project-MI/robot_ws/install
+
+Name: rosaria
+Description: Description of rosaria
+Version: 0.9.0
+Cflags: -I/home/ros/ROS-project-MI/robot_ws/install/include
+Libs: -L/home/ros/ROS-project-MI/robot_ws/install/lib 
+Requires: roscpp nav_msgs geometry_msgs sensor_msgs tf
