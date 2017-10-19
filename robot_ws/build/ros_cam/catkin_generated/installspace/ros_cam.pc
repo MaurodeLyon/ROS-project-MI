@@ -1,8 +1,0 @@
-prefix=/home/ros/ROS-project-MI/robot_ws/install
-
-Name: ros_cam
-Description: Description of ros_cam
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/ros/ROS-project-MI/robot_ws/install/lib 
-Requires: roscpp std_msgs sensor_msgs cv_bridge image_transport
