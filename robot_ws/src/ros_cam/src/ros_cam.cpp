@@ -102,7 +102,7 @@ class ImageHandler
 		}
 	}
 	else{
-		ss << "NONE";		
+		ss << "NONE";
     }
 	direction.data = ss.str();
 	directions_pub.publish(direction);
@@ -111,11 +111,6 @@ class ImageHandler
 	cv::Mat im_with_keypoints;
 	cv::drawKeypoints( binary8S*255, keypoints, im_with_keypoints, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
  
-    // Show blobs
-    cv::imshow("keypoints", im_with_keypoints );
-
-    // Update GUI Window
-    cv::waitKey(3);
     cv_ptr->image=im_with_keypoints;
     // Output modified video stream
     image_pub_.publish(cv_ptr->toImageMsg());

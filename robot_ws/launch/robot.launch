@@ -3,12 +3,6 @@
   <node pkg="core" type="core" name="Core"/>
   <node pkg="joy_handler" type="joy_handler" name="Joy_Handler"/>
 
- <!-- joy node -->
-  <node respawn="true" pkg="joy" type="joy_node" name="Joy" >
-    <param name="dev" type="string" value="/dev/input/js0" />
-    <param name="deadzone" value="0.12" />
-  </node>
-
   <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
     <param name="video_device" value="/dev/video0" />
     <param name="image_width" value="160" />
@@ -18,10 +12,6 @@
     <param name="io_method" value="mmap"/>
   </node>
 
-  <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
-    <remap from="image" to="/usb_cam/image_raw"/>
-    <param name="autosize" value="true" />
-  </node>
   <node pkg="ros_cam" name="ros_cam" type="subscriber1" output="screen" />
 
  <!-- Axes -->

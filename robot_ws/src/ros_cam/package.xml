@@ -2,7 +2,7 @@
 <package>
   <name>ros_cam</name>
   <version>0.0.0</version>
-  <description>The random_turtle package</description>
+  <description>The ros_cam package</description>
   <maintainer email="arthur@todo.todo">maaktnieuit</maintainer>
   <license>TODO</license>
 

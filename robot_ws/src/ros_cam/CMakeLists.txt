@@ -22,5 +22,5 @@ include_directories(
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(subscriber1 src/subscriber1.cpp)
-target_link_libraries(subscriber1 ${catkin_LIBRARIES} ${OpenCV_LIBS})
+add_executable(ros_cam src/ros_cam.cpp)
+target_link_libraries(ros_cam ${catkin_LIBRARIES} ${OpenCV_LIBS})
