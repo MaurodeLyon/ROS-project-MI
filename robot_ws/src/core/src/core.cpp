@@ -19,7 +19,6 @@ private:
   ros::Publisher vel_pub_;
 
   bool isEnabled;
-
 };
 
 
