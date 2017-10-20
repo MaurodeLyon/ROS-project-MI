@@ -1,0 +1,3 @@
+[submodule "robot_ws/src/rosaria"]
+	path = robot_ws/src/rosaria
+	url = https://github.com/amor-ros-pkg/rosaria.git
