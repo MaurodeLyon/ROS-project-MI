@@ -45,35 +45,38 @@ class ImageHandler
 	cv::Mat thresholdimg;
 	cv::inRange(hsv, cv::Scalar(115,100,100),cv::Scalar(125,255,255),thresholdimg);
 	cv::Mat erode;
-	int erosion_size = 2;  
+	int erosion_size = 0;  
     cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1), cv::Point(erosion_size, erosion_size) );
 	cv::erode(thresholdimg,erode,element);
 	cv::Mat gaussian;
-	cv::blur(erode,gaussian, cv::Size(18,20));
+	cv::blur(erode,gaussian, cv::Size(12,14));
 	cv::Mat binaryImage;
 	cv::threshold(gaussian,binaryImage, 50, 255, 1); 
 	cv::Mat binary8S;
 	binaryImage.convertTo(binary8S, 0);
-	cv::SimpleBlobDetector::Params params;
 	
-    params.minThreshold = 0;
-	params.maxThreshold = 255;
-	// Filter by Area.
-	params.filterByArea = true;
-	params.minArea = 0;
-	params.maxArea = 100000000;
+    cv::SimpleBlobDetector::Params params;
+				params.minThreshold = 0;
+				params.maxThreshold = 255;
 
-	// Filter by Circularity
-	params.filterByCircularity = true;
-	params.minCircularity = 0.1;
+				// Filter by Area.
+				params.filterByArea = true;
+				params.minArea = 0;
+				params.maxArea = 10000000;
 
-	// Filter by Convexity
-	params.filterByConvexity = true;
-	params.minConvexity = 0.87;
+				// Filter by Circularity
+				params.filterByCircularity = true;
+				params.minCircularity = 0;
+				params.maxCircularity = 1;
 
-	// Filter by Inertia
-	params.filterByInertia = true;
-	params.minInertiaRatio = 0.01;
+				// Filter by Convexity
+				params.filterByConvexity = true;
+				params.minConvexity = 0;
+				params.maxConvexity = 1;
+
+				// Filter by Inertia
+				params.filterByInertia = false;
+				params.minInertiaRatio = 0.7;
 
 	cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
 				
@@ -84,25 +87,35 @@ class ImageHandler
 	std_msgs::String direction;
   	std::stringstream ss;
 
-	if(keypoints.size()>0)
+    if(keypoints.size()>0)
 	{
 		int x = keypoints[0].pt.x;
 		int y = keypoints[0].pt.y;
-		if(x<63)
+		int size = keypoints[0].size;
+		
+		if(size<70)
 		{
-			ss << "LEFT";
+		
+			if(x<63)
+			{
+				ss << "LEFT";
+			}
+			else if(x>91)
+			{
+				ss << "RIGHT";
+			}
+			else
+			{
+				ss << "CENTER";
+			}
 		}
-		else if(x>91)
-		{
-			ss << "RIGHT";
-		}
-		else
-		{
-			ss << "CENTER";
+		else{
+			ss<< "FOUND";
 		}
 	}
 	else{
-		ss << "NONE";
+		ROS_INFO("CONENOTFOUND");
+		ss << "NONE";		
     }
 	direction.data = ss.str();
 	directions_pub.publish(direction);
