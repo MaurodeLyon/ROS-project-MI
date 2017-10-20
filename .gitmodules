@@ -1,3 +1,6 @@
 [submodule "robot_ws/src/rosaria"]
 	path = robot_ws/src/rosaria
 	url = https://github.com/amor-ros-pkg/rosaria.git
+[submodule "robot_ws/src/usb_cam"]
+	path = robot_ws/src/usb_cam
+	url = https://github.com/ros-drivers/usb_cam.git
