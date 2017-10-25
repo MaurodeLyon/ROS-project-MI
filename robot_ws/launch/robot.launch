@@ -1,5 +1,12 @@
 <launch>
-  <node pkg="rosaria" type="RosAria" name="RosAria"/>
+  <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="GPS" >
+    <param name="port" value="/dev/ttyUSB0" />
+    <param name="baud" value="9600" />
+  </node>
+
+  <node pkg="rosaria" type="RosAria" name="RosAria">
+    <param name="port" value="/dev/ttyUSB0" />
+  </node>
   <node pkg="core" type="core" name="Core"/>
   <node pkg="joy_handler" type="joy_handler" name="Joy_Handler"/>
 
@@ -14,8 +21,6 @@
   </node>
 
   <node pkg="ros_cam" name="ros_cam" type="ros_cam" output="screen" />
-
- <!-- Axes -->
   <param name="axis_linear" value="1" type="int"/>
   <param name="axis_angular" value="0" type="int"/>
   <param name="scale_linear" value="2" type="double"/>

@@ -93,7 +93,7 @@ class ImageHandler
 		int y = keypoints[0].pt.y;
 		int size = keypoints[0].size;
 		
-		if(size<70)
+		if(size<60)
 		{
 		
 			if(x<63)

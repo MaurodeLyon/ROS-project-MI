@@ -17,6 +17,7 @@ private:
   void turningOnPointRight();
   void goingLeft();
   void goingRight();
+  void stop();
 
   ros::NodeHandle nh_;
   ros::Subscriber joy_direction_sub_;
@@ -36,7 +37,7 @@ Core::Core()
   joy_enabled_sub_ = nh_.subscribe<std_msgs::Bool>("is_joystick_enabled", 10, &Core::joyHandler2Callback, this);
   camera_direction_sub_ = nh_.subscribe("/camera_directions", 10, &Core::receivingDirections,this);
    
-  rosaria_pub_ = nh_.advertise<geometry_msgs::Twist>("RosAria/cmd_vel", 1);
+  rosaria_pub_ = nh_.advertise<geometry_msgs::Twist>("/RosAria/cmd_vel", 1);
 
   while(true){
     ros::spinOnce();
@@ -75,6 +76,7 @@ void Core::receivingDirections(const std_msgs::String::ConstPtr& msg)
 	}
 	else if(msg->data == "FOUND")
 	{
+		stop();
 	}
   }
 }
@@ -82,7 +84,14 @@ void Core::receivingDirections(const std_msgs::String::ConstPtr& msg)
 void Core::straight()
 {
    	geometry_msgs::Twist msg;
-    msg.linear.x = .1;
+    msg.linear.x = .25;
+    rosaria_pub_.publish(msg);
+}
+
+void Core::stop()
+{
+   	geometry_msgs::Twist msg;
+    msg.linear.x = .0;
     rosaria_pub_.publish(msg);
 }
 
@@ -96,7 +105,7 @@ void Core::turningOnPointRight()
 void Core::goingLeft()
 {
     geometry_msgs::Twist msg;
-    msg.angular.z = .1;
+    msg.angular.z = .2;
     msg.linear.x = .1;
     rosaria_pub_.publish(msg);
 }
@@ -104,7 +113,7 @@ void Core::goingLeft()
 void Core::goingRight()
 {
     geometry_msgs::Twist msg;
-    msg.angular.z = -.1;
+    msg.angular.z = -.2;
 	msg.linear.x = .1;
     rosaria_pub_.publish(msg);
 }
