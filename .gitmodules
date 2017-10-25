@@ -4,3 +4,12 @@
 [submodule "robot_ws/src/usb_cam"]
 	path = robot_ws/src/usb_cam
 	url = https://github.com/ros-drivers/usb_cam.git
+[submodule "terminal_ws/src/roslibjs"]
+	path = terminal_ws/src/roslibjs
+	url = https://github.com/RobotWebTools/roslibjs
+[submodule "terminal_ws/src/rosbridge_suite"]
+	path = terminal_ws/src/rosbridge_suite
+	url = https://github.com/RobotWebTools/rosbridge_suite
+[submodule "terminal_ws/src/rosauth"]
+	path = terminal_ws/src/rosauth
+	url = https://github.com/GT-RAIL/rosauth
