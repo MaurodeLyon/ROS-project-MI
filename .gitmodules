@@ -16,3 +16,6 @@
 [submodule "terminal_ws/src/rosauth"]
 	path = terminal_ws/src/rosauth
 	url = https://github.com/GT-RAIL/rosauth
+[submodule "terminal_ws/src/roswww"]
+	path = terminal_ws/src/roswww
+	url = https://github.com/tork-a/roswww
