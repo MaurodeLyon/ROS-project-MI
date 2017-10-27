@@ -1,7 +1,12 @@
-<launch>
- <!-- joy node -->
-  <node respawn="true" pkg="joy" type="joy_node" name="Joy" >
-    <param name="dev" type="string" value="/dev/input/js0" />
-    <param name="deadzone" value="0.12" />
+<launch> 
+	<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+	<node pkg="joy" type="joy_node" name="joy" />
+	<node name="rospy_tutorials" pkg="rospy_tutorials" type="add_two_ints_server" />
+	 <arg name="name" default="roswww"/>
+  <arg name="port" default="8085"/> <!-- avoid to use apache default port -->
+  <arg name="webpath" default="www"/> <!-- package webroot -->
+  <arg name="cached" default="true"/>
+
+  <node pkg="roswww" type="webserver.py" name="$(arg name)" args="--name $(arg name) --port $(arg port) --webpath $(arg webpath) --cached $(arg cached)">
   </node>
 </launch>
